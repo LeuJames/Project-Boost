@@ -3,12 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
-  [SerializeField] float rcsThrust = 200f;
-  [SerializeField] float mainThrust = 100f;
+  [SerializeField] float rcsThrust = 100f;
+  [SerializeField] float mainThrust = 1000f;
   [SerializeField] AudioClip mainEngine;
   [SerializeField] AudioClip death;
-  [SerializeField] AudioClip start;
+  [SerializeField] AudioClip success;
 
+  [SerializeField] ParticleSystem mainEngineParticles;
+  [SerializeField] ParticleSystem deathParticles;
+  [SerializeField] ParticleSystem successParticles;
 
   Rigidbody rigidBody;
     AudioSource audioSource;
@@ -56,19 +59,19 @@ public class Rocket : MonoBehaviour
     audioSource.Stop();
     audioSource.PlayOneShot(death);
     deathParticles.Play();
-    Invoke("LoadAfterDeath", 1f);
+    Invoke("LoadFirstLevel", 1f);
   }
 
   private void StartSuccessSequence()
   {
     state = State.Transcending;
     audioSource.Stop();
-    audioSource.PlayOneShot(start);
+    audioSource.PlayOneShot(success);
     successParticles.Play();
     Invoke("LoadNextScene", 1f); //todo parameterise time
   }
 
-  private void LoadAfterDeath()
+  private void LoadFirstLevel()
   {
     SceneManager.LoadScene(0);
   }
@@ -118,11 +121,11 @@ public class Rocket : MonoBehaviour
 
   private void ApplyThrust()
   {
-    rigidBody.AddRelativeForce(Vector3.up * mainThrust);
+    rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
     if (!audioSource.isPlaying)
     {
       audioSource.PlayOneShot(mainEngine);
+      mainEngineParticles.Play();
     }
-    mainEngineParticles.Play();
   }
 }

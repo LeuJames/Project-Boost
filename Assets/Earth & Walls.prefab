@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 3879279873858363349, guid: 3826250274f8a5f459623d4b92a9ad45,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78a90a6accba7ac4c9002d9e3c08ea28, type: 2}
     - target: {fileID: 3879279873858363351, guid: 3826250274f8a5f459623d4b92a9ad45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,6 +377,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 3879279873858363349, guid: 3826250274f8a5f459623d4b92a9ad45,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78a90a6accba7ac4c9002d9e3c08ea28, type: 2}
     - target: {fileID: 3879279873858363351, guid: 3826250274f8a5f459623d4b92a9ad45,
         type: 3}
       propertyPath: m_LocalPosition.x
