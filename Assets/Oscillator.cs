@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class Oscillator : MonoBehaviour
   void Update()
   {
     //set movement factor automatically
+    if (period <= Mathf.Epsilon) { return; }
     float cycles = Time.time / period; 
     const float tau = Mathf.PI * 2f; // about 6.28
     float rawSinWave = Mathf.Sin(cycles * tau); //goes from -1 to +1
